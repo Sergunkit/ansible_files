@@ -1,0 +1,17 @@
+- hosts: firstServer
+
+  tasks:
+    - name: install git
+      # apt-get update && apt-get install redis-server
+      ansible.builtin.apt: # имя модуля Ansible
+        name: git
+        state: present
+        update_cache: yes
+      become: yes
+
+    - name: remove git
+      # apt-get remove redis-server
+      ansible.builtin.apt:
+        name: git
+        state: absent
+      become: yes
